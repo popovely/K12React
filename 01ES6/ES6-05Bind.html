@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>bind() 함수</h2>
+    <script>
+    console.error("bind() called..1");
+    // 객체생성 - 리터럴 표기법을 통한 생성
+    var obj = {name : 'popovely'};
+    // 함수 생성
+    function myBind(){
+        // 바인딩이 되지않은 상태에서는 this가 window객체를 가리킨다.
+        console.log('this.name', this.name);
+    }
+    /*
+        객체 obj와 함수 myBind()를 바인드해서 새로운 함수를 생성한다.
+        즉, 함수와 객체를 묶어서 this를 window객체가 아닌
+        내가 지정한 객체로 고정시키는 역할을 한다.
+    */
+    var myBinding = myBind.bind(obj);
+
+    myBinding();  // 콘솔에 popovely가 출력된다.
+    myBind();     // window객체에는 name이 없으므로 아무것도 출력되지 않는다.
+
+    console.error("bind() called..2");
+    class Point{
+        constructor(x,y){
+            this.x = x;
+            this.y = y;
+        }
+        info(){
+            /*
+                템플릿 문자열
+                    : `(backquote)를 이용해서 문자열과 변수를 연결한다.
+                      변수 표현시 ${변수명} 과 같이 사용할 수 있다.
+                      일반적인 문자열을 표현하는 것처럼 연결해서 기술할 수 있어서 편리하다.
+            */
+            console.log('템플릿문자열', `x: ${this.x}, y: ${this.y}`);
+            // 콤마로 연결하면 사이에 띄어쓰기 한칸이 삽입된다.
+            console.log('일반JS사용', 'x:', this.x, ', y:', this.y);
+            // +기호를 사용하면 띄어쓰기가 삽입되지 않음. 문자열 안에 별도로 넣어줘야함.
+//          console.log('일반JS사용'+' x:'+ this.x +' y:'+ this.y);
+        }
+    }
+    // Point객체 생성후 멤버함수 호출
+    var point1 = new Point(10, 20);
+    point1.info();  // 출력결과 : 10, 20
+
+    // Point객체의 info()함수와 pobj객체를 바인딩한다.
+    var pobj = {x:100, y:200};
+    // 바인딩과 동시에 호출
+    point1.info.bind(pobj)();  // 출력결과 : 100, 200
+    </script>
+</body>
+</html>
