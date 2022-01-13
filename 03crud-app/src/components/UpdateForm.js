@@ -30,7 +30,7 @@ class UpdateForm extends Component {
             <h2>Update</h2>
             {/* form에서의 action과 method는 별 의미가 없음. 그저 명시적으로 기술했을 뿐. */}
             {/* 서브밋 이벤트 리스너에서 이벤트 객체를 통해 입력값을 전송한다. */}
-            <form action="/create_process" method="post" onSubmit={function(e){
+            <form action="/create_process" method="post" onSubmit={(e) => {
                     // submit되었을때 화면의 새로고침 차단
                     e.preventDefault();
                     // 부모가 내려준 props를 통해 폼값을 전달한다.
@@ -39,8 +39,7 @@ class UpdateForm extends Component {
                         e.target.title.value,
                         e.target.desc.value
                     );
-                }.bind(this)
-            }>
+            }}>
                 {/* 기존 게시물에 대한 수정이므로 게시물 아이디를 저장할 hidden상자가 필요하다. */}
                 {/* 
                     App.js에서 기존 게시물을 props로 전달한 후 input상자에 즉시 삽입하면

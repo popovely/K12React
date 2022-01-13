@@ -20,7 +20,7 @@ class Navi extends Component {
             lists.push(<li key={data[i].id}>
                 <a href={"/content/"+ data[i].id}
                    data-id={data[i].id}
-                   onClick={function(event){
+                   onClick={(event) => {
 //                      console.log(event);
 //                      debugger;   // 실행을 잠시 멈추고 디버깅모드로 진입하게 한다.
                         event.preventDefault();
@@ -29,7 +29,7 @@ class Navi extends Component {
                             data-id 속성으로 지정한 값을 얻어와서 전달한다.
                         */
                         this.props.onChangePage(event.target.dataset.id);
-                   }.bind(this)}
+                   }}
                 >{data[i].title}</a>
             </li>);
             i++;
