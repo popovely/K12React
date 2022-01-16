@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Component</title>
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+    <h2>Class Componenet (클래스형 컴포넌트)</h2>
+    <div id="myClass"></div>
+    <script type="text/babel">
+    class Car extends React.Component {
+        render() {
+            return <h4>오빠 차 뽑았다. 널 데리러 가</h4>;
+        }
+    }
+    ReactDOM.render(<Car />, document.getElementById("myClass"));
+    </script>
+
+
+    <h2>Function Component (함수형 컴포넌트)</h2>
+    <div id="myFunction"></div>
+    <script type="text/babel">
+    function Computer() {
+        return <h4>오빠~나~컴퓨터 바꿨어!! 배그하자~</h4>;
+    }
+    ReactDOM.render(<Computer />, document.getElementById("myFunction"));
+    </script>
+
+
+    <h2>Constructor (생성자)</h2>
+    <div id="myConstructor"></div>
+    <script type="text/babel">
+    class Animal extends React.Component {
+        constructor() {
+            super();
+            this.state = {dog : "포메라니안"};
+        }
+        render() {
+            /* state에 저장된 dog를 가져와서 표현식으로 출력 */
+            return <h4>나는 {this.state.dog} 이(가) 좋더라...</h4>;
+        }
+    }
+    ReactDOM.render(<Animal />, document.getElementById("myConstructor"));
+    </script>
+
+
+    <h2>컴포넌트 중첩해서 사용하기</h2>
+    <div id="myCiC"></div>
+    <script type="text/babel">
+    class Computer extends React.Component {
+        render() {
+            return <h4>내 컴터가 완전 최신 사양이었으면 좋겠당</h4>;
+        }
+    }
+    class Notebook extends React.Component {
+        render() {
+            return(
+                <div>
+                    <Computer />
+                    <h4>내 노트북은 10월 31일에 손준영씨와 사왔다..후후</h4>
+                </div>
+            );
+        }
+    }
+    ReactDOM.render(<Notebook />, document.getElementById("myCiC"));
+    </script>
+</body>
+</html>

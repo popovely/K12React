@@ -1,0 +1,48 @@
+<!-- 
+    최상위 태그는 반드시 하나만 존재해야 한다.
+    같은 depth에 태그가 있으면 안됨!
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>render함수</title>
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+    <div id="myDiv1"></div>
+    <div id="myDiv2"></div>
+
+    <script type="text/babel">
+    // 상수로 출력할 HTML을 선언
+    const myElement = (
+        <div>
+            <div>최상위 태그는 무조건 한개만 있어야 함</div>
+            <table border="1">
+                <tr>
+                    <th>Name</th>
+                </tr>
+                <tr>
+                    <td>알라딘</td>
+                </tr>
+                <tr>
+                    <td>자스민</td>
+                </tr>
+            </table>
+        </div>
+    );
+    // 클래스형 컴포넌트 정의
+    class MyClass extends React.Component {
+        render() {
+            return <h1>React.Componenet를 상속한 MyClass</h1>
+        }
+    }
+    ReactDOM.render(myElement, document.getElementById("myDiv1"));
+    ReactDOM.render(<MyClass />, document.getElementById("myDiv2"));
+    </script>
+</body>
+</html>

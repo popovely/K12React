@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>state</title>
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+    <h2>state01</h2>
+    <h3>state 생성 및 초기화, 출력하기</h3>
+    <div id="myArea1"></div>
+    <script type="text/babel">
+    class Person extends React.Component {
+        // 생성자 정의
+        constructor(props) {
+            super(props);
+            // state를 생성. JSON객체 형태로 기술
+            this.state = {
+                name : "손준영",
+                age : 27,
+                hobby : "지현이 바보라고 부르기",
+                birth : 1996
+            };
+        }
+        // 각 state값을 출력한다. 사용법은 props와 동일
+        render() {
+            return (
+                <div>
+                    <h1>내 이름은 {this.state.name}</h1>
+                    <p>
+                        나이 : {this.state.age}<br />
+                        취미 : {this.state.hobby}<br />
+                        태어난해 : {this.state.birth}<br />
+                    </p>
+                </div>
+            );
+        }
+    }
+    ReactDOM.render(<Person />, document.getElementById("myArea1"));
+    </script>
+
+
+
+    <h2>state02</h2>
+    <h3>함수 호출로 state 변경하기</h3>
+    <div id="myArea2"></div>
+    <script type="text/babel">
+    class Car extends React.Component {
+        // 생성자 정의시 인자로 props를 받던 안받던 별 차이는 없지만 안전빵으로 쓰는게 좋음
+        constructor(props) {
+            super(props);
+            // state생성
+            this.state = {
+                brand : "KIA",
+                model : "모닝",
+                color : "검은색은 Black",
+                year : 2002
+            };
+        }
+        // 화살표 함수를 통해 멤버함수 생성
+        changeColor = () => {
+            // setState()함수를 통해 state값을 변경
+            this.setState({
+                color : "파란색은 Blue",
+                model : "프라이드"
+            });
+        }
+        render() {
+            return(
+                <div>
+                    <h1>My {this.state.brand}</h1>
+                    <p>
+                        내차정보 <br />
+                        색깔 : {this.state.color}<br />
+                        모델명 : {this.state.model}<br />
+                        제조사 : {this.state.brand}<br />
+                    </p>
+                    <button type="button" onClick={this.changeColor}>
+                        색깔변경
+                    </button>
+                </div>
+            );
+        }
+    }
+    ReactDOM.render(<Car />, document.getElementById("myArea2"));
+    </script>
+</body>
+</html>
