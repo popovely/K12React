@@ -12,7 +12,7 @@
 <body>
 <!-- 
     소멸 단계
-        - 컴포넌트가 DOm에서 제거될 때 수행되는 함수로 1가지만 존재한다.
+        - 컴포넌트가 DOM에서 제거될 때 수행되는 함수로 1가지만 존재한다.
         - 요청취소, 타이머해제, 구독해제 등의 작업을 처리하기에 적합하다.
     1. componentWillUnmount()
  -->
@@ -42,7 +42,7 @@
                 // state가 true인 경우에만 GNBComp 컴포넌트를 변수에 추가한다.
                 if (this.state.showFlag) {
                     myheader = <GNBComp />;
-                };
+                }
                 return (
                     <div>
                         {myheader}
